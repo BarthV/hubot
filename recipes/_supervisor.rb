@@ -13,11 +13,11 @@ supervisor_service 'hubot' do
   stopsignal 'TERM'
   user node['hubot']['user']
   startretries 3
-  stdout_logfile  "#{node['hubot']['supervisor']['stdout_logfile']}"
-  stdout_logfile_maxbytes "#{node['hubot']['supervisor']['stdout_logfile_maxbytes']}"
-  stdout_logfile_backups node['hubot']['supervisor']['stdout_logfile_backups']
-  stderr_logfile  "#{node['hubot']['supervisor']['stderr_logfile']}"
-  stderr_logfile_maxbytes "#{node['hubot']['supervisor']['stderr_logfile_maxbytes']}"
+  stdout_logfile node['hubot']['supervisor']['stdout_logfile']
+  stdout_logfile_maxbytes node['hubot']['supervisor']['stdout_logfile_maxbytes']
+  stdout_logfile_backups node['hubot']['supervisor']['stdout_logfile_backups'
+  stderr_logfile node['hubot']['supervisor']['stderr_logfile']
+  stderr_logfile_maxbytes node['hubot']['supervisor']['stderr_logfile_maxbytes']
   stderr_logfile_backups node['hubot']['supervisor']['stderr_logfile_backups']
   environment node['hubot']['config']
 end
