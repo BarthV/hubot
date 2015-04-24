@@ -1,4 +1,4 @@
-include_recipe "supervisor"
+include_recipe 'supervisor'
 
 hubot_name = node['hubot']['name']
 hubot_bin = 'bin/hubot'
@@ -19,5 +19,5 @@ supervisor_service 'hubot' do
   stderr_logfile  "#{node['hubot']['supervisor']['stderr_logfile']}"
   stderr_logfile_maxbytes "#{node['hubot']['supervisor']['stderr_logfile_maxbytes']}"
   stderr_logfile_backups node['hubot']['supervisor']['stderr_logfile_backups']
-  environment node['hubot']['config'] 
+  environment node['hubot']['config']
 end
