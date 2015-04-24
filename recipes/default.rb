@@ -47,7 +47,7 @@ end
 # https://github.com/github/hubot/archive/v2.4.6.zip
 checkout_location = ::File.join(Chef::Config[:file_cache_path], 'hubot')
 git checkout_location do
-  repository 'https://github.com/github/hubot.git'
+  repository node['hubot']['git_source']
   revision "v#{node['hubot']['version']}"
   action :checkout
   notifies :run, 'execute[build and install hubot]', :immediately
@@ -83,7 +83,7 @@ template "#{node['hubot']['install_dir']}/hubot-scripts.json" do
   group node['hubot']['group']
   mode '0644'
   variables node['hubot'].to_hash
-  notifies :restart, 'service[hubot]'
+  notifies :restart, "#{daemon}_service[hubot]", :delayed
 end
 
 template "#{node['hubot']['install_dir']}/external-scripts.json" do
