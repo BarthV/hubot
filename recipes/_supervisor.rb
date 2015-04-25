@@ -1,15 +1,17 @@
 include_recipe 'supervisor'
 
 hubot_name = node['hubot']['name']
-hubot_bin = '.bin/hubot'
+hubot_bin = File.join(node['hubot']['install_dir'], 'node_modules', '.bin', 'hubot')
 hubot_adapter = node['hubot']['adapter']
+
+node.default['hubot']['config']['PATH'] = "#{node['hubot']['install_dir']}/node_modules/.bin:%(ENV_PATH)s"
 
 supervisor_service 'hubot' do
   action [:enable, :start]
   autostart true
   autorestart true
   directory node['hubot']['install_dir']
-  command "#{node['hubot']['install_dir']}/#{hubot_bin} -n #{hubot_name} -a #{hubot_adapter}"
+  command "#{hubot_bin} -n \"#{hubot_name}\" -a #{hubot_adapter}"
   stopsignal 'TERM'
   user node['hubot']['user']
   startretries 3
