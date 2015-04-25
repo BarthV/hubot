@@ -36,7 +36,6 @@ default['hubot']['external_scripts'] = []
 default['hubot']['daemon'] = 'runit'
 
 # runit stuff
-# You can append any runit LWRP attribute here, they will be appended to the resource
 default['hubot']['runit']['default_logger'] = false # Use true to log to /var/log/hubot
 
 # supervisor stuff
