@@ -23,7 +23,7 @@ suites:
   run_list:
   - recipe[hubot]
   attributes: {}
-- name: default
+- name: supervisor
   run_list:
   - recipe[hubot]
   attributes:
