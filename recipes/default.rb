@@ -64,7 +64,7 @@ template "#{node['hubot']['install_dir']}/package.json" do
   group node['hubot']['group']
   mode '0644'
   variables node['hubot'].to_hash
-  notifies :install, 'nodejs_npm[install-hubot]', :immediately
+  notifies :install, 'nodejs_npm[install]', :immediately
 end
 
 # Get the daemonizing server
@@ -88,15 +88,7 @@ template "#{node['hubot']['install_dir']}/external-scripts.json" do
   notifies :restart, "#{daemon}_service[hubot]", :delayed
 end
 
-nodejs_npm 'hubot' do
-  path node['hubot']['install_dir']
-  json true
-  user node['hubot']['user']
-  group node['hubot']['group']
-  action :nothing
-end
-
-nodejs_npm 'install-hubot' do
+nodejs_npm 'install' do
   path node['hubot']['install_dir']
   json true
   user node['hubot']['user']
