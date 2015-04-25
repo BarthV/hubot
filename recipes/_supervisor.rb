@@ -1,7 +1,7 @@
 include_recipe 'supervisor'
 
 hubot_name = node['hubot']['name']
-hubot_bin = 'bin/hubot'
+hubot_bin = '.bin/hubot'
 hubot_adapter = node['hubot']['adapter']
 
 supervisor_service 'hubot' do
