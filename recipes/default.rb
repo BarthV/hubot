@@ -53,8 +53,8 @@ end
 nodejs_npm 'hubot' do
   path ::File.join(Chef::Config[:file_cache_path], 'hubot')
   json true
-  user node['hubot']['user']
-  group node['hubot']['group']
+  user 'root'
+  group 'root'
   action :nothing
 end
 
