@@ -35,7 +35,11 @@ default['hubot']['external_scripts'] = []
 # Choose daemonize program: 'runit' or 'supervisor'
 default['hubot']['daemon'] = 'runit'
 
-# Supervisor stuff
+# runit stuff
+# You can append any runit LWRP attribute here, they will be appended to the resource
+default['hubot']['runit']['default_logger'] = false # Use true to log to /var/log/hubot
+
+# supervisor stuff
 default['hubot']['supervisor']['stdout_logfile'] = '/var/log/hubot.log'
 default['hubot']['supervisor']['stdout_logfile_maxbytes'] = '10MB'
 default['hubot']['supervisor']['stdout_logfile_backups'] = 10
